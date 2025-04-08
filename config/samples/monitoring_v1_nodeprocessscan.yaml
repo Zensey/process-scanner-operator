@@ -1,0 +1,13 @@
+apiVersion: monitoring.example.com/v1
+kind: NodeProcessScan
+metadata:
+  labels:
+    app.kubernetes.io/name: nps-oper
+    app.kubernetes.io/managed-by: kustomize
+  name: nodeprocessscan-sample
+spec:
+  processNames:
+  - nginx
+  - malware
+  interval: 60  # Scan every 60 seconds
+

@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app.kubernetes.io/name: nps-oper
+    app.kubernetes.io/managed-by: kustomize
+  name: nps-oper-manager-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: nps-oper-manager-role
+subjects:
+- kind: ServiceAccount
+  name: nps-oper-controller-manager
+  namespace: nps-oper-system

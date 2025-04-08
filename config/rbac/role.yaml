@@ -1,0 +1,45 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: nps-oper-manager-role
+rules:
+- apiGroups:
+  - monitoring.example.com
+  resources:
+  - nodeprocessscans
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - monitoring.example.com
+  resources:
+  - nodeprocessscans/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - monitoring.example.com
+  resources:
+  - nodeprocessscans/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - pods/exec
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
