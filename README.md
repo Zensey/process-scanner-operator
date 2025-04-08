@@ -1,9 +1,9 @@
 # Process scanner operator
-Process scanner operator. Scans containers for a given list of processes
+Process scanner operator for k8s. Scans containers for a given list of processes
 
 ## Description
-A simple Kubernetes operator to scan all containers of default namespace for a list of processes.
-Note: container will be handled only if the target image has ps binary.
+A simple Kubernetes operator to scan all containers from the default namespace for a list of processes.
+Note: container will be handled only if the target image has the ps binary.
 
 
 ## Getting Started
@@ -37,18 +37,22 @@ make deploy IMG=<your-registry>/nps-oper:tag
 privileges or be logged in as admin.
 
 **Create instances of your solution**
-You can apply the samples (examples) from the config/sample:
+To apply the operator edit the yaml file and apply it:
 
 ```sh
 kubectl apply -f config/samples/monitoring_v1_nodeprocessscan.yaml
-kubectl get nodeprocessscan nodeprocessscan-sample -o yaml
-
 ```
 
->**NOTE**: Ensure that the samples has default values to test it out.
+**Get the report**
+To get the report from operator:
 
+```sh
+kubectl get nodeprocessscan nodeprocessscan-sample -o yaml
+```
 
-**Troubleshooting:**
+**Troubleshooting**
+
+Make sure that you have an original version of role.yaml, otherwise rollback it with git. Note that its being rewriten by make install for some reason.
 
 ```sh
 kubectl apply -f config/rbac/role.yaml
